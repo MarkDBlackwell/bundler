@@ -220,10 +220,12 @@ module Bundler
     end
 
     def clean_system(*args)
+
       with_clean_env { Kernel.system(*args) }
     end
 
     def clean_exec(*args)
+
       with_clean_env { Kernel.exec(*args) }
     end
 
@@ -278,6 +280,7 @@ module Bundler
     end
 
     def sudo(str)
+
       `sudo -p 'Enter your password to install the bundled RubyGems to your system: ' #{str}`
     end
 

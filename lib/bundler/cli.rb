@@ -47,6 +47,7 @@ module Bundler
           groff = "groff -Wall -mtty-char -mandoc -Tascii"
           pager = pager_system
 
+
           Kernel.exec "#{groff} #{root}/#{command} | #{pager}"
         else
           puts File.read("#{root}/#{command}.txt")
@@ -483,6 +484,7 @@ module Bundler
     end
     map %w(pack) => :package
 
+
     desc "exec", "Run the command in context of the bundle"
     long_desc <<-D
       Exec runs a command, providing it access to the gems in the bundle. While using
@@ -495,6 +497,7 @@ module Bundler
 
       begin
         # Run
+
         Kernel.exec(*args)
       rescue Errno::EACCES
         Bundler.ui.error "bundler: not executable: #{args.first}"
@@ -600,6 +603,7 @@ module Bundler
       return unless spec
       Dir.chdir(spec.full_gem_path) do
         command = "#{editor} #{spec.full_gem_path}"
+
         success = system(command)
         Bundler.ui.info "Could not run '#{command}'" unless success
       end
@@ -679,7 +683,9 @@ module Bundler
       constant_name = name.split('_').map{|p| p[0..0].upcase + p[1..-1] }.join
       constant_name = constant_name.split('-').map{|q| q[0..0].upcase + q[1..-1] }.join('::') if constant_name =~ /-/
       constant_array = constant_name.split('::')
+
       git_user_name = `git config user.name`.chomp
+
       git_user_email = `git config user.email`.chomp
       opts = {
         :name            => name,
@@ -715,6 +721,7 @@ module Bundler
         template(File.join("newgem/.travis.yml.tt"),         File.join(target, ".travis.yml"),            opts)
       end
       Bundler.ui.info "Initializating git repo in #{target}"
+
       Dir.chdir(target) { `git init`; `git add .` }
 
       if options[:edit]

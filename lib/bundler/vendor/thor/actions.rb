@@ -249,6 +249,7 @@ class Thor
       say_status :run, desc, config.fetch(:verbose, true)
 
       unless options[:pretend]
+
         config[:capture] ? `#{command}` : system("#{command}")
       end
     end

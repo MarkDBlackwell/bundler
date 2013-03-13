@@ -155,6 +155,7 @@ module Bundler
       outbuf = ''
       Bundler.ui.debug(cmd)
       Dir.chdir(base) {
+
         outbuf = `#{cmd}`
         if $? == 0
           block.call(outbuf) if block

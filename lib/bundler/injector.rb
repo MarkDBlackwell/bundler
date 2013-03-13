@@ -54,6 +54,7 @@ module Bundler
     def append_to(gemfile_path)
       gemfile_path.open("a") do |f|
         f.puts
+
         f.puts "# Added at #{Time.now} by #{`whoami`.chomp}:"
         f.puts new_gem_lines
       end
