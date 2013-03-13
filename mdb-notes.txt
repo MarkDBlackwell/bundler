@@ -1,0 +1,3 @@
+Kernel.` - Returns the standard output of running cmd in a subshell.
+Kernel.system - Executes command in a subshell
+Kernel.exec - Replaces the current process by running the given external command.
